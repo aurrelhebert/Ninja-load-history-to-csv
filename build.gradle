@@ -23,7 +23,17 @@ apply plugin: 'kotlin'
 apply plugin: 'application'
 apply plugin: 'idea'
 
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Ninja ES update',
+                'Implementation-Version': '0.0.1',
+                'Main-Class': 'io.ninja.UpdateESDataKt'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
 mainClassName = 'io.ninja.LaunchKt'
+//mainClassName = 'io.ninja.UpdateESDataKt'
 
 defaultTasks 'run'
 
@@ -53,10 +63,15 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {
+        url  "http://dl.bintray.com/mbuhot/maven"
+    }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile 'mbuhot:eskotlin:0.3.0'
+    compile group: 'org.elasticsearch.gradle', name: 'build-tools', version: '6.0.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 

@@ -1,0 +1,19 @@
+package io.ninja
+
+class Item(val myDate: String, val titre: String, val description: String, val category: String, val month: String, val index: String, val myId: Number) {
+
+    override fun toString(): String {
+        return """
+{"index": {"_type": "doc", "_id": ${myId.toString()}, "_index": "${index}"}}
+{"date": "${myDate}", "titre": "${titre}", "description": "${description}",  "category": "${category}", "month": "${month}"}"""
+    }
+}
+/*
+{"index": {"_type": "doc", "_id": 1511533108000003, "_index": "jt13h"}}
+{"contentUrl": "/societe/la-tradition-des-catherinettes-est-perpetuellement-fetee-2071458.html", "publisher": {"logo": {"url": "https://static.lci.fr/assets/images/logo-lci.png", "width": 155, "@type": "ImageObject", "height": 60}, "@type": "Organization", "name": "LCI"}, "description": "JT 13H - La fête de la Sainte-Catherine se célèbre tous les 25 novembre de chaque année. Elle oscille entre mode et tradition.", "timestamp": 1511533108000003, "image": {"url": "https://photos.lci.fr/images/1024/576/la-tradition-des-catherinettes-est-perpetuellement-fetee-20171124-1618-2e896e-0@1x.jpeg", "width": "1024", "@type": "ImageObject", "height": "576"}, "uploadDate": "2017-11-24T15:18:28.000Z", "@context": "https://schema.org", "embedURL": "/societe/la-tradition-des-catherinettes-est-perpetuellement-fetee-2071458.html", "thumbnailUrl": "https://photos.lci.fr/images/1920/1080/la-tradition-des-catherinettes-est-perpetuellement-fetee-20171124-1618-0948e5-0@1x.jpeg", "@type": "VideoObject", "name": "La tradition des Catherinettes est perpétuellement fêtée"}
+{"index": {"_type": "doc", "_id": 1511533108000004, "_index": "jt13h"}}
+{"contentUrl": "/societe/la-grande-saison-de-la-peche-aux-oursins-a-debute-en-mediterranee-2071453.html", "publisher": {"logo": {"url": "https://static.lci.fr/assets/images/logo-lci.png", "width": 155, "@type": "ImageObject", "height": 60}, "@type": "Organization", "name": "LCI"}, "description": "JT 13H – La pêche aux oursins a débuté à Port-Vendres dans les Pyrénnées orientales.", "timestamp": 1511533108000004, "image": {"url": "https://photos.lci.fr/images/1024/576/la-grande-saison-de-la-peche-aux-oursins-a-debute-en-mediterranee-20171124-1618-9f0605-0@1x.jpeg", "width": "1024", "@type": "ImageObject", "height": "576"}, "uploadDate": "2017-11-24T15:18:28.000Z", "@context": "https://schema.org", "embedURL": "/societe/la-grande-saison-de-la-peche-aux-oursins-a-debute-en-mediterranee-2071453.html", "thumbnailUrl": "https://photos.lci.fr/images/1920/1080/la-grande-saison-de-la-peche-aux-oursins-a-debute-en-mediterranee-20171124-1618-5cb562-0@1x.jpeg", "@type": "VideoObject", "name": "La grande saison de la pêche aux oursins a débuté en Méditerranée"}
+{"index": {"_type": "doc", "_id": 1511533107000000, "_index": "jt13h"}}
+{"contentUrl": "/societe/la-grande-saison-d-hiver-a-commence-a-bonneval-sur-arc-2071457.html", "publisher": {"logo": {"url": "https://static.lci.fr/assets/images/logo-lci.png", "width": 155, "@type": "ImageObject", "height": 60}, "@type": "Organization", "name": "LCI"}, "description": "JT 13H - L&#39;hiver s&#39;est bel et bien installé à Bonneval-sur-Arc", "timestamp": 1511533107000000, "image": {"url": "https://photos.lci.fr/images/1024/576/la-grande-saison-d-hiver-a-commence-a-bonneval-sur-arc-20171124-1618-4cfd9b-0@1x.jpeg", "width": "1024", "@type": "ImageObject", "height": "576"}, "uploadDate": "2017-11-24T15:18:27.000Z", "@context": "https://schema.org", "embedURL": "/societe/la-grande-saison-d-hiver-a-commence-a-bonneval-sur-arc-2071457.html", "thumbnailUrl": "https://photos.lci.fr/images/1920/1080/la-grande-saison-d-hiver-a-commence-a-bonneval-sur-arc-20171124-1618-bc20b7-0@1x.jpeg", "@type": "VideoObject", "name": "La grande saison d&#39;hiver a commencé à Bonneval-sur-Arc"}
+
+ */

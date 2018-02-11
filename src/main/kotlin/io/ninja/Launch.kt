@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     // Html parsing
 
     // Apply treatment on 70 existing pages
-    for (i in 1 .. 70) {
+    for (i in 61 .. 68) {
 
         var index = ""
 
@@ -52,7 +52,7 @@ fun main(args: Array<String>) {
                                     }
 
                                     // Save result as CSV line saving: uploadDate, name, description, category
-                                    result.append("${json.get("uploadDate")}, ${json.get("name").toString().replace(",","")}, ${json.get("description").toString().replace(",","")}, $category\n")
+                                    result.append("${json.get("uploadDate")}, ${json.get("name").toString().replace(",","").replace("\n", "")}, ${json.get("description").toString().replace(",","").replace("\n", "")}, $category\n")
                                 }
                             }
                         }
