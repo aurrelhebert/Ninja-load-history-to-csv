@@ -6,7 +6,7 @@ import org.jsoup.Jsoup
 import java.io.File
 
 fun main(args: Array<String>) {
-    println("Hello world!")
+    //println("Hello world!")
 
     val parser = Parser()
 
@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     // Html parsing
 
     // Apply treatment on 70 existing pages
-    for (i in 61 .. 68) {
+    for (i in 1 .. 3) {
 
         var index = ""
 
@@ -30,8 +30,14 @@ fun main(args: Array<String>) {
             select("a").forEachIndexed { _, element ->
                 if (element.attr("class") == "medium-3col-article-block-article-link") {
 
+                    // Load current HREF page and current element id
+                    val currentHref = element.attr("href")
+                    val currentId = currentHref.split("-").last().removeSuffix(".html")
+                    val localHref="https://www.lci.fr${currentHref}"
+
+                    //println(currentId)
                     // Then connect to specific page element
-                    Jsoup.connect("https://www.lci.fr${element.attr("href")}").get().run {
+                    Jsoup.connect(localHref).get().run {
 
                         // Load it's details
                         select("script").forEachIndexed { _, element ->
@@ -52,7 +58,13 @@ fun main(args: Array<String>) {
                                     }
 
                                     // Save result as CSV line saving: uploadDate, name, description, category
-                                    result.append("${json.get("uploadDate")}, ${json.get("name").toString().replace(",","").replace("\n", "")}, ${json.get("description").toString().replace(",","").replace("\n", "")}, $category\n")
+                                    result.append("${json.get("uploadDate")}, " +
+                                            "${json.get("name").toString().replace(",","").replace("\n", "")}, " +
+                                            "${json.get("description").toString().replace(",","").replace("\n", "")}, " +
+                                            "$category, " +
+                                            "$currentId, " +
+                                            "$localHref\n"
+                                    )
                                 }
                             }
                         }
@@ -71,7 +83,7 @@ fun main(args: Array<String>) {
     }
 
     // Empty buffer at the end
-    val file = File("jt13h-full-last.csv")
+    val file = File("jt13h-tmp-id.csv")
 
     file.writeText(result.toString())
     result.delete(0, result.length)
