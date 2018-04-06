@@ -5,3 +5,5 @@ build/
 gradle/
 bulkText
 out/
+bulk_id
+bulk_ninja
